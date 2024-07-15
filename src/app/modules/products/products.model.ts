@@ -6,6 +6,7 @@ const productSchema = new Schema<TProduct>({
     name: {
         type: String,
         required: true,
+        unique:true
     },
     category: {
         type: String,

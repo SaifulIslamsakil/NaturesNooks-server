@@ -1,13 +1,22 @@
-import {  Request, Response } from "express"
+import { Request, Response } from "express"
+import catchAsync from "../../utils/catchAsync"
+import { ProductServices } from "./products.service"
+import sendResponse from "../../utils/sendResponse"
+import httpStatus from "http-status"
 
-const createProducts = (req:Request, res:Response)=>{
-    console.log("sss")
+const createProducts = catchAsync(async (req: Request, res: Response) => {
+    const body = req.body
+    const result = await ProductServices.createProductsIntoDB(body)
 
-    res.status(200).json({
-        name:"d"
-    })
-    
-}
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'product created successfully',
+        data: result,
+    });
+
+})
+
 
 
 export const ProductController = {

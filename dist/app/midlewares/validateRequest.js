@@ -15,6 +15,7 @@ const validateRequest = (schema) => {
             yield schema.parseAsync({
                 body: req.body
             });
+            next();
         }
         catch (error) {
             next(error);
