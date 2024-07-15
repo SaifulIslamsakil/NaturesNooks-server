@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build":"tsc -w",
+    "build": "tsc -w",
     "start": "nodemon dist/server.js",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,9 +20,19 @@
     "expess": "^0.0.1-security",
     "express": "^4.19.2",
     "mongoose": "^8.5.1",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17"
+    "@eslint/js": "^9.7.0",
+    "@types/cors": "^2.8.17",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-node": "^11.1.0",
+    "globals": "^15.8.0",
+    "typescript-eslint": "^7.16.0"
   }
 }

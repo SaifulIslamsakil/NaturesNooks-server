@@ -1,15 +1,18 @@
-import express from "express"
+import express, { Request, Response } from "express"
 import cors from "cors"
+import Route from "./app/route"
 const app = express()
-const port = 3000
-
 
 app.use(express.json())
-app.use(cors({origin:"http://localhost:5173"}))
+app.use(cors({ origin: ["http://localhost:5173"] }))
 
-app.get('/', (req, res) => {
+// use Route
+app.use("/api/v1", Route)
+
+app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!')
 })
+
 
 
 export default app
