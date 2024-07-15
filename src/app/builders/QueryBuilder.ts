@@ -24,21 +24,26 @@ class QueryBuilder<T> {
         deletedField.forEach(element => delete copyQuray[element])
         this.modelQuery = this.modelQuery.find(copyQuray as FilterQuery<T>)
         return this
-    }  
-    
-    sort() {
-        const sort = (this?.query?.sort as string)?.split(",")?.join(" ") || '-createdAt'
-        this.modelQuery = this.modelQuery.sort(sort as string)
-
-        return this
     }
     paginate() {
         const limit = Number(this?.query?.limit || 1)
         const page = Number(this?.query?.page || 1)
-        const skip = (page-1) * limit
+        const skip = (page - 1) * limit
         this.modelQuery = this.modelQuery.skip(skip).limit(limit)
 
         return this
+    }
+    sort() {
+        const sortOrder = this.query.sort as string
+        if (sortOrder === "asc" || sortOrder === "desc") {
+            const sort = sortOrder === "asc" ? 1 : -1
+            this.modelQuery = this.modelQuery.sort({ price: sort });
+            return this;
+        }
+        const defaultSort = (this?.query?.sort as string)?.split(",")?.join(" ") || '-createdAt'
+        this.modelQuery = this.modelQuery.sort(defaultSort as string)
+        return this
+
     }
 }
 

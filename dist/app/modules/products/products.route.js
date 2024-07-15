@@ -11,4 +11,5 @@ const products_validation_1 = require("./products.validation");
 const Route = express_1.default.Router();
 Route.post("/create-product", (0, validateRequest_1.default)(products_validation_1.productValidationSchema), products_controller_1.ProductController.createProducts);
 Route.get("/", products_controller_1.ProductController.getAllProduct);
+Route.get("/:id", products_controller_1.ProductController.getSingelProduct);
 exports.ProductsRoute = Route;

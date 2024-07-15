@@ -8,5 +8,6 @@ const Route = express.Router()
 Route.post("/create-product", validateRequest(productValidationSchema), ProductController.createProducts)
 
 Route.get("/", ProductController.getAllProduct)
+Route.get("/:id", ProductController.getSingelProduct)
 
 export const ProductsRoute = Route

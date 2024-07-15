@@ -11,6 +11,5 @@ exports.productValidationSchema = zod_1.z.object({
         image: zod_1.z.array(zod_1.z.string().url({ message: "Each image must be a valid URL" })).nonempty({ message: "At least one image is required" }),
         price: zod_1.z.number().positive({ message: "Price must be a positive number" }),
         inStock: zod_1.z.number().int({ message: "In-stock quantity must be an integer" }).nonnegative({ message: "In-stock quantity must be a non-negative number" }),
-        isDeleted: zod_1.z.boolean().default(false),
     })
 });

@@ -36,7 +36,17 @@ const getAllProduct = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
         data: result,
     });
 }));
+const getSingelProduct = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield products_service_1.ProductServices.getSingelProductInDB(req.params.id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'product recived successfully',
+        data: result,
+    });
+}));
 exports.ProductController = {
     createProducts,
-    getAllProduct
+    getAllProduct,
+    getSingelProduct
 };

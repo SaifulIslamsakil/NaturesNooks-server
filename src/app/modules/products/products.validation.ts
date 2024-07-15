@@ -9,7 +9,6 @@ export const productValidationSchema = z.object({
         image: z.array(z.string().url({ message: "Each image must be a valid URL" })).nonempty({ message: "At least one image is required" }),
         price: z.number().positive({ message: "Price must be a positive number" }),
         inStock: z.number().int({ message: "In-stock quantity must be an integer" }).nonnegative({ message: "In-stock quantity must be a non-negative number" }),
-        isDeleted: z.boolean().default(false),
     })
 });
 

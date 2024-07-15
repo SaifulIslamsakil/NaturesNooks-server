@@ -1,4 +1,6 @@
+import httpStatus from "http-status";
 import QueryBuilder from "../../builders/QueryBuilder";
+import AppError from "../../error/AppError";
 import { TProduct } from "./products.interface";
 import { productModel } from "./products.model";
 
@@ -16,11 +18,24 @@ const getAllProductFormDB = async (payload: Record<string, unknown>) => {
         .sort()
         .paginate()
     const result = await getProduct.modelQuery
+    if (!result) {
+        throw new AppError(httpStatus.BAD_REQUEST, "data is not recived")
+    }
+    return result
+}
+
+const getSingelProductInDB = async (id: string) => {
+    const result = productModel.findById(id)
+    if (!result) {
+        throw new AppError(httpStatus.BAD_REQUEST, "data is not recived")
+    }
+
     return result
 }
 
 
 export const ProductServices = {
     createProductsIntoDB,
-    getAllProductFormDB
+    getAllProductFormDB,
+    getSingelProductInDB
 }
