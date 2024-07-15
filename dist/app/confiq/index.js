@@ -9,5 +9,6 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config(({ path: path_1.default.join(process.cwd(), ".env") }));
 exports.confiq = {
     Port: process.env.PORT,
-    Database_url: process.env.DATABASE_URL
+    Database_url: process.env.DATABASE_URL,
+    Node_Env: process.env.NODE_ENV
 };
