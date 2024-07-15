@@ -36,4 +36,4 @@ const productSchema = new Schema<TProduct>({
     timestamps: true,
 });
 
-export const productModel= model("product", productSchema)
+export const productModel= model<TProduct>("product", productSchema)
