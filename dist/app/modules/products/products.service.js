@@ -8,14 +8,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductServices = void 0;
+const QueryBuilder_1 = __importDefault(require("../../builders/QueryBuilder"));
 const products_model_1 = require("./products.model");
 const createProductsIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(payload);
     const product = yield products_model_1.productModel.create(payload);
     return product;
 });
+const getAllProductFormDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const initialQuery = products_model_1.productModel.find();
+    const getProduct = new QueryBuilder_1.default(initialQuery, payload)
+        .search(['name', 'category', 'description'])
+        .filter()
+        .sort()
+        .paginate();
+    const result = yield getProduct.modelQuery;
+    return result;
+});
 exports.ProductServices = {
-    createProductsIntoDB
+    createProductsIntoDB,
+    getAllProductFormDB
 };
