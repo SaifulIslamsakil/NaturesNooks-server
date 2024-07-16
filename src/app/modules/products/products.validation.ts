@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-// Define the Zod schema for the product with custom error messages
+
 export const productValidationSchema = z.object({
     body:z.object({
         name: z.string().trim(),
@@ -10,7 +10,6 @@ export const productValidationSchema = z.object({
         price: z.number().nonnegative(),
         inStock: z.number().nonnegative(),
         productType: z.enum(["special", "Special", "offerd"]),
-        isDeleted: z.boolean().default(false)
     })
 });
 

@@ -21,12 +21,16 @@ class QueryBuilder {
         const copyQuray = Object.assign({}, this.query);
         const deletedField = ["searchParams", "sort", "limit", "page", "field"];
         deletedField.forEach(element => delete copyQuray[element]);
+        if (copyQuray.filter) {
+            this.modelQuery = this.modelQuery.find({ category: copyQuray.filter });
+            return this;
+        }
         this.modelQuery = this.modelQuery.find(copyQuray);
         return this;
     }
     paginate() {
         var _a, _b;
-        const limit = Number(((_a = this === null || this === void 0 ? void 0 : this.query) === null || _a === void 0 ? void 0 : _a.limit) || 1);
+        const limit = Number(((_a = this === null || this === void 0 ? void 0 : this.query) === null || _a === void 0 ? void 0 : _a.limit) || 20);
         const page = Number(((_b = this === null || this === void 0 ? void 0 : this.query) === null || _b === void 0 ? void 0 : _b.page) || 1);
         const skip = (page - 1) * limit;
         this.modelQuery = this.modelQuery.skip(skip).limit(limit);
