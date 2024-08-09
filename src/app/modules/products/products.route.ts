@@ -9,5 +9,7 @@ Route.post("/create-product", validateRequest(productValidationSchema), ProductC
 
 Route.get("/", ProductController.getAllProduct)
 Route.get("/:id", ProductController.getSingelProduct)
+Route.delete("/:id", ProductController.productDelete)
+Route.put("/product-update/:id", ProductController.productUpdate)
 
 export const ProductsRoute = Route

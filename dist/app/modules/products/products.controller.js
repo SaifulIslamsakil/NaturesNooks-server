@@ -45,8 +45,28 @@ const getSingelProduct = (0, catchAsync_1.default)((req, res) => __awaiter(void 
         data: result,
     });
 }));
+const productDelete = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = products_service_1.ProductServices.productDeleteIntoDB(req.params.id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'product deleted successfully',
+        data: result,
+    });
+}));
+const productUpdate = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield products_service_1.ProductServices.productUpdateIntoDB(req.body, req.params.id);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'product updated successfully',
+        data: result,
+    });
+}));
 exports.ProductController = {
     createProducts,
     getAllProduct,
-    getSingelProduct
+    getSingelProduct,
+    productDelete,
+    productUpdate
 };

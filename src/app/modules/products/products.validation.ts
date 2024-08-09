@@ -9,7 +9,7 @@ export const productValidationSchema = z.object({
         image: z.array(z.string()),
         price: z.number().nonnegative(),
         inStock: z.number().nonnegative(),
-        productType: z.enum(["special", "Special", "offerd"]),
+        productType: z.enum(["special", "featured", "offerd"]),
     })
 });
 

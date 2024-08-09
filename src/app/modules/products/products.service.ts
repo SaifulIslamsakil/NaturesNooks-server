@@ -25,7 +25,7 @@ const getAllProductFormDB = async (payload: Record<string, unknown>) => {
 }
 
 const getSingelProductInDB = async (id: string) => {
-    const result = productModel.findById(id)
+    const result = await productModel.findById(id)
     if (!result) {
         throw new AppError(httpStatus.BAD_REQUEST, "data is not recived")
     }
@@ -33,9 +33,31 @@ const getSingelProductInDB = async (id: string) => {
     return result
 }
 
+const productDeleteIntoDB = async (id: string) => {
+    const productData = await productModel.findByIdAndDelete(id)
+    return productData
+}
+
+const productUpdateIntoDB = async (payload: TProduct, id: string) => {
+    const product = await productModel.findById(id)
+    if (!product) {
+        throw new AppError(httpStatus.BAD_REQUEST, "product is not exists")
+    }
+    const updatedProduct = await productModel.findByIdAndUpdate(id, payload, {
+        new: true
+    })
+    if (!updatedProduct) {
+        throw new AppError(httpStatus.BAD_REQUEST, "product is not updated")
+    }
+
+    return updatedProduct
+}
+
 
 export const ProductServices = {
     createProductsIntoDB,
     getAllProductFormDB,
-    getSingelProductInDB
+    getSingelProductInDB,
+    productDeleteIntoDB,
+    productUpdateIntoDB
 }

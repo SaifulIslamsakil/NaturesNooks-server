@@ -34,7 +34,7 @@ const productSchema = new mongoose_1.Schema({
     },
     productType: {
         type: String,
-        enum: ["special", "Special", "offerd"],
+        enum: ["special", "featured", "offerd"],
         required: true
     },
     isDeleted: {

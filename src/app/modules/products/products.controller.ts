@@ -37,11 +37,31 @@ const getSingelProduct = catchAsync(async (req: Request, res: Response) => {
     });
 })
 
+const productDelete = catchAsync(async (req: Request, res: Response) => {
+    const result = ProductServices.productDeleteIntoDB(req.params.id)
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'product deleted successfully',
+        data: result,
+    });
+})
 
 
+const productUpdate = catchAsync(async (req: Request, res: Response) => {
+    const result = await ProductServices.productUpdateIntoDB(req.body, req.params.id)
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'product updated successfully',
+        data: result,
+    });
+})
 
 export const ProductController = {
     createProducts,
     getAllProduct,
-    getSingelProduct
+    getSingelProduct,
+    productDelete,
+    productUpdate
 }

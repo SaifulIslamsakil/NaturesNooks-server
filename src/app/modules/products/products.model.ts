@@ -33,7 +33,7 @@ const productSchema = new Schema<TProduct>({
     },
     productType: {
         type: String,
-        enum: ["special", "Special", "offerd"],
+        enum: ["special", "featured", "offerd"],
         required: true
     },
     isDeleted: {

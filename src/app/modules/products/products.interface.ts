@@ -6,7 +6,7 @@ export type TProduct = {
     image: string[];
     price: number;
     inStock: number;
-    productType:"special"|"Special"|"offerd";
+    productType:"Special"|"Featured"|"Offerd";
     isDeleted: boolean;
 }
 

@@ -35,14 +35,33 @@ const getAllProductFormDB = (payload) => __awaiter(void 0, void 0, void 0, funct
     return result;
 });
 const getSingelProductInDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = products_model_1.productModel.findById(id);
+    const result = yield products_model_1.productModel.findById(id);
     if (!result) {
         throw new AppError_1.default(http_status_1.default.BAD_REQUEST, "data is not recived");
     }
     return result;
 });
+const productDeleteIntoDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const productData = yield products_model_1.productModel.findByIdAndDelete(id);
+    return productData;
+});
+const productUpdateIntoDB = (payload, id) => __awaiter(void 0, void 0, void 0, function* () {
+    const product = yield products_model_1.productModel.findById(id);
+    if (!product) {
+        throw new AppError_1.default(http_status_1.default.BAD_REQUEST, "product is not exists");
+    }
+    const updatedProduct = yield products_model_1.productModel.findByIdAndUpdate(id, payload, {
+        new: true
+    });
+    if (!updatedProduct) {
+        throw new AppError_1.default(http_status_1.default.BAD_REQUEST, "product is not updated");
+    }
+    return updatedProduct;
+});
 exports.ProductServices = {
     createProductsIntoDB,
     getAllProductFormDB,
-    getSingelProductInDB
+    getSingelProductInDB,
+    productDeleteIntoDB,
+    productUpdateIntoDB
 };

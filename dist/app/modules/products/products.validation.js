@@ -10,6 +10,6 @@ exports.productValidationSchema = zod_1.z.object({
         image: zod_1.z.array(zod_1.z.string()),
         price: zod_1.z.number().nonnegative(),
         inStock: zod_1.z.number().nonnegative(),
-        productType: zod_1.z.enum(["special", "Special", "offerd"]),
+        productType: zod_1.z.enum(["special", "featured", "offerd"]),
     })
 });
