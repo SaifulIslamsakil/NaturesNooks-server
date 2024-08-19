@@ -4,7 +4,7 @@ import { PyamentController } from "./payment.controller"
 
 const Route = express.Router()
 
-Route.post("/create-payment-intregate", PyamentController.paymentIntregate)
+Route.post("/create-payment-intregate",PyamentController.paymentIntregate)
 
 
 export const PaymentRoute = Route
