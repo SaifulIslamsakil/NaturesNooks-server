@@ -6,6 +6,6 @@ import { productReviewController } from "./productReview.controller"
 const Route = express.Router()
 
 Route.post("/create-review", validateRequest(productReviewValidationSchema), productReviewController.createProductReview)
-Route.post("/:id", productReviewController.getProductReview)
+Route.get("/:id", productReviewController.getProductReview)
 
 export const productReviewRoute = Route

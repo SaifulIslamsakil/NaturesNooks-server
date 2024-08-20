@@ -11,8 +11,8 @@ const createProductReviewInToDB = async (payload: TProductReview) => {
 }
 
 const getProductReviewFormDB = async (id: string) => {
-    const result = await productReviewModel.findById(id)
-    if (!result) {
+    const result = await productReviewModel.find({ productId: id })
+    if (result.length === 0) {
         throw new AppError(httpStatus.BAD_REQUEST, "This Product Is Not Review")
     }
     return result
