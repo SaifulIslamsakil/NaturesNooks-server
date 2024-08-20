@@ -1,11 +1,8 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrderInfo = void 0;
-const mongoose_1 = __importDefault(require("mongoose"));
-const ProductDataSchema = new mongoose_1.default.Schema({
+exports.OrderInfoModel = void 0;
+const mongoose_1 = require("mongoose");
+const ProductDataSchema = new mongoose_1.Schema({
     id: {
         type: String,
         required: true
@@ -15,7 +12,7 @@ const ProductDataSchema = new mongoose_1.default.Schema({
         required: true
     }
 });
-const OrderInfoSchema = new mongoose_1.default.Schema({
+const OrderInfoSchema = new mongoose_1.Schema({
     name: {
         type: String,
         required: true
@@ -37,11 +34,11 @@ const OrderInfoSchema = new mongoose_1.default.Schema({
         required: true
     },
     zipCode: {
-        type: Number,
+        type: String,
         required: true
     },
     cardNumber: {
-        type: Number,
+        type: String,
         required: true
     },
     phoneNumber: {
@@ -53,9 +50,17 @@ const OrderInfoSchema = new mongoose_1.default.Schema({
         required: true
     },
     cvv: {
-        type: Number,
+        type: String,
         required: true
+    },
+    totalPrice: {
+        type: Number,
+        require: true
+    },
+    totalItem: {
+        type: Number,
+        require: true
     },
     productData: [ProductDataSchema]
 });
-exports.OrderInfo = mongoose_1.default.model('OrderInfo', OrderInfoSchema);
+exports.OrderInfoModel = (0, mongoose_1.model)('OrderInfo', OrderInfoSchema);

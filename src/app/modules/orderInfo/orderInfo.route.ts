@@ -6,6 +6,6 @@ import { OrderController } from "./orderInfo.controller";
 
 const Route = express.Router()
 
-Route.post("/create-Order", validateRequest(OrderInfoValidationSchema), OrderController.createOrderInfo)
+Route.post("/create-order", validateRequest(OrderInfoValidationSchema), OrderController.createOrderInfo)
 
 export const OrderRoute = Route

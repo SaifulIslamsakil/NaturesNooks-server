@@ -9,11 +9,13 @@ export type TOrderInfo = {
     address: string;
     state: string;
     city: string;
-    zipCode: number;
-    cardNumber: number;
+    zipCode: string;
+    cardNumber: string;
     phoneNumber: string;
     date: string;
-    cvv: number;
+    cvv: string;
+    totalPrice:number;
+    totalItem:number;
     productData: TProductData[]
 
 }

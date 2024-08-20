@@ -9,5 +9,5 @@ const validateRequest_1 = __importDefault(require("../../midlewares/validateRequ
 const orderInfo_validation_1 = require("./orderInfo.validation");
 const orderInfo_controller_1 = require("./orderInfo.controller");
 const Route = express_1.default.Router();
-Route.post("/create-Order", (0, validateRequest_1.default)(orderInfo_validation_1.OrderInfoValidationSchema), orderInfo_controller_1.OrderController.createOrderInfo);
+Route.post("/create-order", (0, validateRequest_1.default)(orderInfo_validation_1.OrderInfoValidationSchema), orderInfo_controller_1.OrderController.createOrderInfo);
 exports.OrderRoute = Route;

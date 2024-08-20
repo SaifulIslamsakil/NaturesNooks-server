@@ -1,6 +1,8 @@
-import mongoose from 'mongoose';
+import { model, Schema } from "mongoose";
+import { TOrderInfo } from "./orderInfo.interface";
 
-const ProductDataSchema = new mongoose.Schema({
+
+const ProductDataSchema = new Schema({
     id: {
         type: String,
         required: true
@@ -11,7 +13,7 @@ const ProductDataSchema = new mongoose.Schema({
     }
 });
 
-const OrderInfoSchema = new mongoose.Schema({
+const OrderInfoSchema = new Schema<TOrderInfo>({
     name: {
         type: String,
         required: true
@@ -33,11 +35,11 @@ const OrderInfoSchema = new mongoose.Schema({
         required: true
     },
     zipCode: {
-        type: Number,
+        type: String,
         required: true
     },
     cardNumber: {
-        type: Number,
+        type: String,
         required: true
     },
     phoneNumber: {
@@ -49,11 +51,19 @@ const OrderInfoSchema = new mongoose.Schema({
         required: true
     },
     cvv: {
-        type: Number,
+        type: String,
         required: true
+    },
+    totalPrice : {
+        type :Number,
+        require:true
+    },
+    totalItem : {
+        type :Number,
+        require:true
     },
     productData: [ProductDataSchema]
 });
 
-export const OrderInfo = mongoose.model('OrderInfo', OrderInfoSchema);
+export const OrderInfoModel = model<TOrderInfo>('OrderInfo', OrderInfoSchema);
  
